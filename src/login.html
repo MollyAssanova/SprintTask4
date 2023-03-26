@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in</title>
+</head>
+<style>
+    .head{
+        background-color: #6798a7;
+        min-height: 50px;
+    }
+    .a{
+        display: flex;
+        color: white;
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    a{
+        color: white;
+        text-decoration: none;
+    }
+    input{
+        width: 400px;
+        height: 40px;
+    }
+</style>
+<body>
+<div>
+  <div class="head">
+    <div class="a">
+      <div style="width: 40%;">
+        <b >TWITTER</b>
+      </div>
+      <div style="width: 60%;">
+        <div style="float:right;">
+          <b style="margin-left: 10px;"><a href="">Tweets</a></b>
+          <b style="margin-left: 10px;">  <a href="login.html">Login</a></b>
+          <b style="margin-left: 10px;"><a href="sprint4.html">Register</a></b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <center>
+    <h1>Log In</h1>
+    <form onsubmit="login(event)">
+      <div style="margin-top: 50px;">
+        <label ><big><big>Email:</big></big></label><br>
+        <input type="text" name="email"><br><br>
+        <label ><big><big>Password:</big></big></label><br>
+        <input type="password" name="password"><br><br>
+      </div>
+      <button type="submit" style="background-color:  rgb(106, 153, 224); border: none; width: 150px; height: 35px; color: white;">Login</button>
+    </form>
+  </center>
+
+  <script>
+            function login(event) {
+                event.preventDefault();
+
+                const email = event.target.email.value;
+                const password = event.target.password.value;
+
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const user = users.find((user) => user.email === email && user.password === password);
+                if (!user) {
+                    alert('Incorrect email or password');
+                    return;
+                }
+
+                alert('Login successful!');
+                window.location.href = 'profile.html';
+            }
+        </script>
+
+</body>
+</html>
